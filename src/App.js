@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React, {useEffect} from "react";
 import './App.css';
+import Search from "./components/search/Search";
+import RestaurantList from "./components/search/RestaurantList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [restaurants, setRestaurants] = React.useState([])
+    useEffect(() => {
+        fetch('http://localhost:8080/api/v1/restaurants')
+            .then(response => response.json())
+            .then(restaurants => {
+                setRestaurants(restaurants)
+            })
+    }, [])
+
+    return (
+        <div className="App">
+            <h1>Restaurant Service</h1>
+            <Search/>
+            <RestaurantList restaurants={restaurants}/>
+        </div>
+    );
 }
 
 export default App;
