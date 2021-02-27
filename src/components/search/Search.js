@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 const searchButtonStyles = {
-    paddingTop: '.5rem',
+    height: '50px'
 }
 
 const searchInputStyle = {
@@ -19,6 +19,7 @@ const SearchBar = () => (
             id="input-outlined"
             placeholder="Search a restaurant..."
             name="search"
+            className="input-style"
             style={searchInputStyle}
         />
         <button style={searchButtonStyles} type="submit">Search</button>
