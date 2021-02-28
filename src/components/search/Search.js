@@ -1,29 +1,45 @@
-import React, {useEffect} from 'react'
+import React from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
 
-const searchButtonStyles = {
-    height: '50px'
+const useStyles = makeStyles((theme) => ({
+    root: {
+        padding: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        width: 400,
+    },
+    input: {
+        marginLeft: theme.spacing(1),
+        flex: 1,
+    },
+    iconButton: {
+        padding: 10,
+    },
+    divider: {
+        height: 28,
+        margin: 4,
+    },
+}));
+
+export default function Search(props) {
+    const classes = useStyles();
+
+    return (
+        <Paper component="form" className={classes.root}>
+            <InputBase
+                onChange={props.onChange}
+                className={classes.input}
+                placeholder="Search For The Restaurant"
+                inputProps={{'aria-label': 'search for the restaurant'}}
+            />
+            <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                <SearchIcon/>
+            </IconButton>
+        </Paper>
+    );
 }
 
-const searchInputStyle = {
-    marginTop: '100px',
-    width: '1000px',
-    height: '50px'
-}
-
-const SearchBar = () => (
-    <div className="search-body">
-        <label htmlFor="header-search">
-        </label>
-        <input
-            type="text"
-            id="input-outlined"
-            placeholder="Search a restaurant..."
-            name="search"
-            className="input-style"
-            style={searchInputStyle}
-        />
-        <button style={searchButtonStyles} type="submit">Search</button>
-    </div>
-);
-
-export default SearchBar;
