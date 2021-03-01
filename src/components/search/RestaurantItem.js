@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function RestaurantItem({name, imageUrl, description}) {
+export default function RestaurantItem(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -47,6 +47,8 @@ export default function RestaurantItem({name, imageUrl, description}) {
         setExpanded(!expanded);
     };
 
+    const {description, imageUrl, name, address} =  props.restaurant;
+    const shortAddress = address ? `${address.city}, ${address.streetName}` : 'City'
     return (
         <Card className={classes.root}>
             <CardHeader
@@ -61,7 +63,7 @@ export default function RestaurantItem({name, imageUrl, description}) {
                     </IconButton>
                 }
                 title={name}
-                subheader="Київ"
+                subheader={shortAddress}
             />
             <CardMedia
                 className={classes.media}

@@ -22,15 +22,6 @@ function App() {
             .catch((e) => console.log(e))
     }, [])
 
-    function getRestaurantItem(restaurant) {
-        return <RestaurantItem
-            key={restaurant.id}
-            name={restaurant.name}
-            imageUrl={restaurant.imageUrl}
-            description={restaurant.description}>
-        </RestaurantItem>;
-    }
-
     return (
         <div className="App">
             <h1>Restaurant Booking Service</h1>
@@ -38,7 +29,8 @@ function App() {
             <Grid container justify="flex-start" spacing={10} style={{padding: '24px'}}>
                 {restaurants.map(restaurant =>
                     <Grid key={restaurant.id} item xs={12} sm={6} md={4} lg={4} xl={3}>
-                        {restaurant.name.includes(filter) && getRestaurantItem(restaurant)}
+                        {restaurant.name.includes(filter) && <RestaurantItem restaurant={restaurant}/>}
+                        {console.log(restaurant)}
                     </Grid>
                 )}
             </Grid>
