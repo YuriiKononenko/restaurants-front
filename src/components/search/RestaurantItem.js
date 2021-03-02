@@ -54,9 +54,9 @@ export default function RestaurantItem(props) {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        R
+                        {name[0].toUpperCase()}
                     </Avatar>
-                }
+                    }
                 action={
                     <IconButton aria-label="settings">
                         <MoreVertIcon/>
