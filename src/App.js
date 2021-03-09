@@ -4,36 +4,29 @@ import Search from "./components/search/Search";
 import Grid from '@material-ui/core/Grid';
 import {Container, GridList} from "@material-ui/core";
 import RestaurantItem from "./components/search/RestaurantItem";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Home from "./components/pages/Home";
+import RestaurantDetails from "./components/pages/RestaurantDetails";
 
 function App() {
-    const [restaurants, setRestaurants] = React.useState([])
     const [filter, setFilter] = useState('')
 
     const handleSearchChange = (typeEvent) => {
         setFilter(typeEvent.target.value);
     }
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/v1/restaurants')
-            .then(response => response.json())
-            .then(restaurants => {
-                setRestaurants(restaurants)
-            })
-            .catch((e) => console.log(e))
-    }, [])
 
+    const home = () => <Home filter={filter}/>;
     return (
         <div className="App">
             <h1>Restaurant Booking Service</h1>
             <Search onChange={handleSearchChange}/>
-            <Grid container justify="flex-start" spacing={10} style={{padding: '24px'}}>
-                {restaurants.map(restaurant =>
-                    <Grid key={restaurant.id} item xs={12} sm={6} md={4} lg={4} xl={3}>
-                        {restaurant.name.includes(filter) && <RestaurantItem restaurant={restaurant}/>}
-                        {console.log(restaurant)}
-                    </Grid>
-                )}
-            </Grid>
+            <Router>
+                <Switch>
+                    <Route path="/" exact component={home}/>
+                    <Route path="/details" component={RestaurantDetails}/>
+                </Switch>
+            </Router>
         </div>
     );
 }

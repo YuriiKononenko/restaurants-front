@@ -63,7 +63,7 @@ export default function RestaurantItem(props) {
                     </IconButton>
                 }
                 title={name}
-                subheader={shortAddress}
+                subheader={"European"}
             />
             <CardMedia
                 className={classes.media}
@@ -72,7 +72,7 @@ export default function RestaurantItem(props) {
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {description}
+                    {"add available time for today"}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
