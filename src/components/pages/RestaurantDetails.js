@@ -1,9 +1,5 @@
+export default function RestaurantDetails() {
 
-
-export default function RestaurantDetails () {
-
-    return (<div>
-        <h1>RestaurantDetails</h1>
-    </div>)
+    return (<div><h1>RestaurantDetails</h1></div>)
 
 }

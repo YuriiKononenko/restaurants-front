@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,7 +48,7 @@ export default function RestaurantItem(props) {
         setExpanded(!expanded);
     };
 
-    const {description, imageUrl, name, address} =  props.restaurant;
+    const {id, description, imageUrl, name, address} = props.restaurant;
     const shortAddress = address ? `${address.city}, ${address.streetName}` : 'City'
     return (
         <Card className={classes.root}>
@@ -56,7 +57,7 @@ export default function RestaurantItem(props) {
                     <Avatar aria-label="recipe" className={classes.avatar}>
                         {name[0].toUpperCase()}
                     </Avatar>
-                    }
+                }
                 action={
                     <IconButton aria-label="settings">
                         <MoreVertIcon/>
@@ -65,11 +66,13 @@ export default function RestaurantItem(props) {
                 title={name}
                 subheader={"European"}
             />
+            <Link to={`/details/${id}`}>
             <CardMedia
                 className={classes.media}
                 image={imageUrl}
                 title="Restaurant image"
             />
+            </Link>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {"add available time for today"}
