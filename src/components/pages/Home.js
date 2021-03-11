@@ -1,8 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import RestaurantItem from "../search/RestaurantItem";
 import React, {useEffect} from "react";
-import {Link} from "react-router-dom";
-
 
 function Home(props) {
 
@@ -18,7 +16,8 @@ function Home(props) {
     }, [])
 
 
-    return (<Grid container justify="flex-start" spacing={10} style={{padding: '24px'}}>
+    return (
+        <Grid container justify="flex-start" spacing={10} style={{padding: '24px'}}>
         {restaurants.map(restaurant =>
             <Grid key={restaurant.id} item xs={12} sm={6} md={4} lg={4} xl={3}>
                 {restaurant.name.includes(props.filter) &&
