@@ -1,5 +1,5 @@
 import Grid from "@material-ui/core/Grid";
-import RestaurantItem from "../search/RestaurantItem";
+import RestaurantItem from "../fragments/search/RestaurantItem";
 import React, {useEffect} from "react";
 
 function Home(props) {
